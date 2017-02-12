@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+    <include file="struts_wanghu.xml"></include>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 改变struts2默认为2M的上传文件大小限制 10M -->
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<!-- <package name="ajax" extends="json-default">
+		<action name="ajax" class="org.action.ajaxAction">
+		    <result type="json">
+		        <param name="root">result</param>
+		    </result>
+		</action>
+	</package> -->
+	<package name="user" extends="struts-default">
+	    
+	    <global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+	    
+	    <!--注册  -->
+	    <action name="regist" class="com.action.userAction" method="regist">
+	        <result type="chain">login</result>
+	        <result name="error">/regist.jsp</result>
+	    </action>
+	    
+	    <!--登录  -->
+	    <action name="login" class="com.action.userAction" method="login">
+	        <result>/index.jsp</result>
+	        <result name="error">/login.jsp</result>
+	    </action>
+	    
+	    <!-- 注销 -->
+	    <action name="logout" class="com.action.userAction" method="logout">
+	        <result>/index.jsp</result>
+	    </action>
+	    
+	    
+	    <!--查询用户信息  -->
+	    <action name="userInfo" class="com.action.userAction" method="userInfo">
+	        <result>/userInfo.jsp</result>
+	    </action>
+	    
+	    <!--修改密码  -->
+	    <action name="updatePwd" class="com.action.userAction" method="updatePwd">
+	        <result>/success.jsp</result>
+	    </action>
+	    
+	    <!--用户排名  -->
+	    <action name="rankList" class="com.action.userAction" method="rankList" >
+	        <result>/ranklist.jsp</result>
+	    </action>
+	    
+	</package>
+	
+	<package name="problem" extends="struts-default">
+	     <global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		
+	     <!--问题列表  -->
+	     <action name="problemList" class="com.action.problemAction" method="problemList">
+	         <result>/problemlist.jsp</result>
+	     </action>
+	     
+	     <action name="problemDetails" class="com.action.problemAction" method="problemDetails">
+	         <result>/problemDetails.jsp</result>
+	     </action>
+	     
+	    
+	</package>
+</struts>

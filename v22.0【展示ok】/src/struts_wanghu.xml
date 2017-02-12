@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="wh" extends="struts-default">
+	
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		
+		<!--修改个人基本信息  -->
+	    <action name="userInfoUpdate" class="com.action.userAction" method="userInfoUpdate">
+	   		 <result>/index.jsp</result>
+	    </action>
+	    
+	    <!--添加题目  -->
+	    <action name="addproblem" class="com.action.problemAction" method="addProblem">
+	   		 <result>/success.jsp</result>
+	    </action>
+	    
+	    <!-- 竞赛列表 -->
+	    <action name="contestList" class="com.action.contestAction" method="contestList" >
+	        <result>/contestlist.jsp</result>
+	    </action>
+	    
+	    <!--用户点击submit交题  -->
+	    <action name="submit" class="com.action.submitAction" method="submit">
+	        <result>/submitsuccess.jsp</result><!-- 处理action链 -->
+	        <result name="error">/index.jsp</result>
+	    </action>
+	    
+	    <!-- status列表  -->
+	    <action name="statusList" class="com.action.submitAction" method="statusList">
+	        <result>/status.jsp</result>
+	        <result name="error">/index.jsp</result>
+	    </action>
+	    
+	    <!-- 管理员查看out情况  -->
+	    <action name="outView" class="com.action.submitAction" method="outView">
+	        <result>/viewout.jsp</result>
+	        <result name="error">/index.jsp</result>
+	    </action>
+	    
+	    
+	    <!-- 上传word  -->
+	    <action name="doUpload" class="com.action.fileAction">
+	        <result name="success">/uploadsucc.jsp</result>
+	        <result name="error">/uploaderror.jsp</result>
+	    </action>
+	    
+	    
+	    <!-- 查看word  -->
+	    <action name="viewWord" class="com.action.fileAction" method="viewWord">
+	        <result name="success">/viewwordDetail.jsp</result>
+	        <result name="error">/uploaderror.jsp</result>
+	    </action>
+	    
+	</package>
+</struts>
